@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output, Input } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,54 +7,27 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   
-  studentsCollection;
-  message = '';
-print = false;
+@Output () sendOutput= new EventEmitter <any>();
+@Input () studentList = [];
+dataCollection = [];
+printFlag = false;
+printProceed;
 
-  studentRecord: {
-    studNo: number,
-    studFirstName: string,
-    studLastName: string,
-    studProgram: string,
-    studYear: string
-  };
-
-
-
-
-private checkPatterns(value:any, pattern: RegExp):boolean{
-  if(pattern.test(value))
-    return true;
-else
-  return false;
+getData(event){
+this.dataCollection = event;
+console.log(event);
 }
 
-add(record){
-    this.studentRecord = record;
-    const stringPattern = /^[A-z\s]+$/;
-    const numberPattern = /^[0-9]+$/;
-    const yearPattern = /^[1-5]+$/;
-    if (this.checkPatterns(this.studentRecord.studNo, numberPattern) && 
-      this.checkPatterns(this.studentRecord.studFirstName, stringPattern) &&
-      this.checkPatterns(this.studentRecord.studLastName, stringPattern) && 
-      this.checkPatterns(this.studentRecord.studProgram, stringPattern) &&
-      this.checkPatterns(this.studentRecord.studYear, yearPattern)){
-        this.studentsCollection.push(this.studentRecord);
-        this.message = null;
-        return true;
-
-      }
-      else {
-        this.message = "ERROR!";
-        return false;
-      }
-      
-  }
-
-printThis(){
-    this.print = true;
-    return this.print;
-  }
+printData(event){
+this.printFlag = event;
+console.log(event);
+if(this.printFlag){
+  if(this.dataCollection.length == 0)
+	this.printProceed = false;
+else
+	this.printProceed = true;
+}
+}
 
 // addStudentEntry():Boolean{
 //   this.printing = false; 

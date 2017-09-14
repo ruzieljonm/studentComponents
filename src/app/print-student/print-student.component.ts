@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'printStudent',
@@ -7,15 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PrintStudentComponent implements OnInit {
 
+ @Output () printData = new EventEmitter<any>();
+@Input () studentCollection = [];
+student;
   constructor() { }
 
   ngOnInit() {
   }
-
-  printing = false;
-  listStudents(): void{
-  this.printing = true;
-  console.log('Showing stored Students');
-}
+  onPrint(){
+  
+    this.printData.emit(this.studentCollection);
+  }
+ printStudents(){
+    this.studentCollection.push(this.student);
+  }
 
 }

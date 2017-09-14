@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'entry',
@@ -6,42 +6,37 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./entry.component.css']
 })
 export class EntryComponent implements OnInit {
-  // @Output() AddClicked = new EventEmitter<any>();
-  // @Input() message;
+  @Output ('data-added') sendData = new EventEmitter<any>();
+student;
+studNo: string;
+studFname: string;
+studLname: string;
+studProg: string;
+studYr: number;
 
-  studNo: number;
-  studFname: string;
-  studLname: string;
-  studProg: string;
-  studYr: number;
-  students;
+constructor(){}
+getStudent() {
 
-  getStudent(): object{
-    this.students = {
-      studNo: this.studNo,
-      studFname: this.studFname,
-      studLname: this.studLname,
-      studProg: this.studProg,
-      studYr: this.studYr
-    };
-    this.studNo = null;
-    this.studFname = null;
-    this.studLname = null;
-    this.studProg = null;
-    this.studYr = null;
-    return this.students;
+  this.student= {
+    studNumber: this.studNo,
+    studFirstName: this.studFname,
+    studLastName: this.studLname,
+    studProgram: this.studProg,
+    studYear: this.studYr
+  };
+
+  this.sendData.emit(this.student);
   }
-
   
-  flag;
-  
-  // onAdd(){
-  //   //this.flag = 'add';
-  //   this.AddClicked.emit({mode: this.flag});
-  // }
-  constructor() { }
-
-  ngOnInit() {
+clearValues(): void{
+  this.studNo = null;
+  this.studFname = null;
+  this.studLname = null;
+  this.studProg = null;
+  this.studYr = null;
   }
-
+addClicked(event){
+this.sendData.emit(true);
+}
+ngOnInit() {}
 }
