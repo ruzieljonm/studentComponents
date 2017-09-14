@@ -1,4 +1,4 @@
-<printStudent [studentList]="printStudents()"></printStudent>
+<app-component [studentList]="printStudents()"></app-component>
   <ul *ngIf="printProceed">
     <li *ngFor="let data of dataCollection">
       {{ data.studNo }} {{ data.studFname }} {{ data.studLname }} {{ data.studProg }} {{ data.studYr }}
