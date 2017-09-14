@@ -6,37 +6,43 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./entry.component.css']
 })
 export class EntryComponent implements OnInit {
-  @Output ('data-added') sendData = new EventEmitter<any>();
-student;
-studNo: string;
-studFname: string;
-studLname: string;
-studProg: string;
-studYr: number;
+  studNo: number;
+  studFname: string;
+  studLname: string;
+  studProg: string;
+  studYr: number;
 
-constructor(){}
-getStudent() {
+  studentInfo: {}
 
-  this.student= {
-    studNumber: this.studNo,
-    studFirstName: this.studFname,
-    studLastName: this.studLname,
-    studProgram: this.studProg,
-    studYear: this.studYr
-  };
-
-  this.sendData.emit(this.student);
+  setStudentInfo(): void {
+    this.studentInfo = {
+      studNo: this.studNo,
+      studFname: this.studFname,
+      studLname: this.studLname,
+      studProg: this.studProg,
+      studYr: this.studYr
+    }
   }
-  
-clearValues(): void{
-  this.studNo = null;
-  this.studFname = null;
-  this.studLname = null;
-  this.studProg = null;
-  this.studYr = null;
+
+  @Output() printing: EventEmitter<any> = new EventEmitter<any>();
+  @Output() student: EventEmitter<any> = new EventEmitter<any>();
+  print = false;
+  addStudent(): void {
+    this.printing.emit(this.print);
+    this.student.emit(this.studentInfo);
+    this.clearValues();
   }
-addClicked(event){
-this.sendData.emit(true);
-}
-ngOnInit() {}
+
+  clearValues(): void {
+    this.studNo = null;
+    this.studFname = null;
+    this.studLname = null;
+    this.studProg = null;
+    this.studYr = null;
+  }
+  constructor() { }
+
+  ngOnInit() {
+  }
+
 }

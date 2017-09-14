@@ -7,27 +7,16 @@ import { Component, EventEmitter, Output, Input } from '@angular/core';
 })
 export class AppComponent {
   
-@Output () sendOutput= new EventEmitter <any>();
-@Input () studentList = [];
-dataCollection = [];
-printFlag = false;
-printProceed;
-
-getData(event){
-this.dataCollection = event;
-console.log(event);
-}
-
-printData(event){
-this.printFlag = event;
-console.log(event);
-if(this.printFlag){
-  if(this.dataCollection.length == 0)
-	this.printProceed = false;
-else
-	this.printProceed = true;
-}
-}
+ studentRecord: {}
+  studentCollection: Array<object> = [];
+  printing = false;
+  setStudentInfo(event): void{
+    this.studentRecord = event;
+    this.studentCollection.push(this.studentRecord);
+  }
+  setPrinting(event): void{
+    this.printing = event;
+  }
 
 // addStudentEntry():Boolean{
 //   this.printing = false; 
