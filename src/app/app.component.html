@@ -7,5 +7,5 @@
   <entry [student]="getStudent()"></entry>
   <addStudent [studentCollection]="getStudColl()"></addStudent> -->
 
-  <entry (student)="setStudentInfo($event)" (printing)="setPrinting($event)"></entry>
+  <entry (student)="getStudent($event)" (printing)="setPrinting($event)"></entry>
 <printStudent [studentCollection]="studentCollection" [printing]="printing"> </printStudent>

@@ -14,7 +14,7 @@ export class EntryComponent implements OnInit {
 
   studentInfo: {}
 
-  setStudentInfo(): void {
+  getStudent(): void {
     this.studentInfo = {
       studNo: this.studNo,
       studFname: this.studFname,

@@ -10,7 +10,7 @@ export class AppComponent {
  studentRecord: {}
   studentCollection: Array<object> = [];
   printing = false;
-  setStudentInfo(event): void{
+  getStudent(event): void{
     this.studentRecord = event;
     this.studentCollection.push(this.studentRecord);
   }
