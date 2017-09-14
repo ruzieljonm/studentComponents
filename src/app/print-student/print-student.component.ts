@@ -7,10 +7,10 @@ import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 })
 export class PrintStudentComponent implements OnInit {
 
-@Input() studentCollection: Array<object> = [];
+  @Input() studentCollection: Array<object> = [];
   @Input() printing: boolean;
 
-  listStudents(): void{
+  listStudents(): void {
     this.printing = true;
     console.log('Showing stored students');
   }

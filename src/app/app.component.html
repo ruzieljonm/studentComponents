@@ -1,3 +1,7 @@
+<entry (student)="getStudent($event)" (printing)="setPrinting($event)"></entry>
+<printStudent [studentCollection]="studentCollection" [printing]="printing"> </printStudent>
+
+
 <!-- <app-component [studentList]="printStudents()"></app-component>
   <ul *ngIf="printProceed">
     <li *ngFor="let data of dataCollection">
@@ -6,6 +10,3 @@
   </ul>
   <entry [student]="getStudent()"></entry>
   <addStudent [studentCollection]="getStudColl()"></addStudent> -->
-
-  <entry (student)="getStudent($event)" (printing)="setPrinting($event)"></entry>
-<printStudent [studentCollection]="studentCollection" [printing]="printing"> </printStudent>
